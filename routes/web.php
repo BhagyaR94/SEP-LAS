@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('splash/splash');
 });
+
+Route::get('/login/{locale}', function($locale){
+    if (! in_array($locale, ['en', 'si', 'ta'])) {
+        abort(400);
+    }
+    App::setLocale($locale);
+    return view('login/login');
+});
+
+Route::post('/signIn', [AuthController::class, 'checkLoginData']);
+
+Route::get('/dashboard/{userId}', function(){
+    return view('dashboard/dashboard');
+});
+
+Route::get('/logout', [AuthController::class, 'logout']);
