@@ -3,15 +3,10 @@
 use Illuminate\Support\Str;
 // $DATABASE_URL=parse_url('postgres://xwhhqskybrpbpk:945a8d37d05e1c6b76ec3d65856e9b26d7c0978e517d86c333099488a8f7aeca@ec2-54-242-43-231.compute-1.amazonaws.com:5432/d6lv8pvgi95gq5');
 $DATABASE_URL=parse_url('mysql://bd5dcebb5cee17:775d10d8@us-cdbr-east-03.cleardb.com/heroku_680bcea11867197?reconnect=true');
-
-
-$url = parse_url(getenv('mysql://bd5dcebb5cee17:775d10d8@us-cdbr-east-03.cleardb.com/heroku_680bcea11867197?reconnect=true'));
-
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-
+$host = $DATABASE_URL["host"];
+$username = $DATABASE_URL["user"];
+$password = $DATABASE_URL["pass"];
+$database = substr($DATABASE_URL["path"], 1);
 
 return [
 
@@ -57,11 +52,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => $DATABASE_URL["host"],
+            'host' => $host,
             'port' => env('DB_PORT', '3306'),
-            'database' => ltrim($DATABASE_URL["path"],"/"),
-            'username' => $DATABASE_URL["user"],
-            'password' => $DATABASE_URL["pass"],
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
