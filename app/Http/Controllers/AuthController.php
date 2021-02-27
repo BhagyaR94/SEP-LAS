@@ -15,7 +15,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $userData = DB::select('select * from users whereIn email = "' . $request->username . '"');
+        $userData = DB::select('select * from users where email = "' . $request->username . '"');
         if (!empty($userData) && $request->password === $userData[0]->password) {
             $request->session()->flash('loggedInUser', $userData[0]);
             return redirect('dashboard/'.$userData[0]->id);
