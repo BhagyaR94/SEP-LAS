@@ -7,6 +7,6 @@
 <a href="{{url('/logout')}}" class="btn btn-danger">Logout</a>
 <a class="btn btn-primary" href="{{url('/sign_up')}}">Sign Up</a></div>
 
- <!--<div class>
-    <a class="btn btn-primary" href="{{url('/sign_up/')}}" role="button"> <img src="{{asset('/images/logo/signup.png')}}" class="img-thumbnail" alt="Responsive image">
-</div>-->
+ <div class>
+    <a class="btn btn-primary img-thumbnail" href="{{url('/sign_up')}}" > <img src="{{asset('/images/logo/signup.png')}}"  alt="Responsive image">
+</div>

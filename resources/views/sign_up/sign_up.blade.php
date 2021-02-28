@@ -30,9 +30,7 @@
                            
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('sign_up.submit')}}">
                         </div>
-<!--                        <div id="register-link" class="text-right">
-                            <a href="#" class="text-info">{{__('login.trouble')}}</a>
-                        </div>-->
+
                     </form>
                     @if($errors->any())
                     <div class="alert alert-danger">

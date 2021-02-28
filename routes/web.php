@@ -36,11 +36,7 @@ Route::get('/dashboard/{userId}', function () {
 Route::get('/logout', [AuthController::class, 'logout']);
 
 
-Route::get('/sign_up/{locale}', function ($locale) {
-    if (!in_array($locale, ['en','si','ta'])) {
-        abort(400);
-    }
-    App::setLocale($locale);
+Route::get('/sign_up', function () {
     return view('sign_up/sign_up');
 });
 
