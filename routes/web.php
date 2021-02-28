@@ -19,8 +19,8 @@ Route::get('/', function () {
     return view('splash/splash');
 });
 
-Route::get('/login/{locale}', function($locale){
-    if (! in_array($locale, ['en', 'si', 'ta'])) {
+Route::get('/login/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'si', 'ta'])) {
         abort(400);
     }
     App::setLocale($locale);
@@ -29,8 +29,14 @@ Route::get('/login/{locale}', function($locale){
 
 Route::post('/signIn', [AuthController::class, 'checkLoginData']);
 
-Route::get('/dashboard/{userId}', function(){
+Route::get('/dashboard/{userId}', function () {
     return view('dashboard/dashboard');
 });
 
 Route::get('/logout', [AuthController::class, 'logout']);
+
+
+Route::get('/sign_up', function () {
+    return view('sign_up/sign_up');
+});
+
