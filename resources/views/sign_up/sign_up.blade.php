@@ -4,7 +4,7 @@
     <div class="container">
         <div id="sign_up-row" class="row justify-content-center">
             <div id="sign_up-column" class="col-md-6">
-                
+
                 <div id="sign_up-box" class="col-md-12">
                     <form id="sign_up-form" class="form" action="{{ url('/signUp') }}" method="POST">
                         @csrf
@@ -25,9 +25,9 @@
                             <label for="confirm_password" class="text-info">{{__('sign_up.confirm_password')}}:</label><br>
                             <input type="password" name="confirm_password" id="confirm_password" class="form-control">
                         </div>
-                        
+
                         <div class="form-group">
-                           
+
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('sign_up.submit')}}">
                         </div>
 
