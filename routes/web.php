@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\SignUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,6 @@ Route::group([
     Route::get('/sign_up', function (Request $request) {
         return view('sign_up/sign_up');
     });
+
+    Route::post('/signUpUser', [SignUpController::class, 'storeDataDb']);
 });

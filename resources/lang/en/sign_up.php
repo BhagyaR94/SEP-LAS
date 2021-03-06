@@ -17,7 +17,7 @@ return [
     'userName' => 'User Name',
     'email' =>'Email',
     'password' => 'Password',
-    'confirm_password'=>'Confirm Password',
+    'password_confirmation'=>'Confirm Password',
     'submit' => 'Sign Up',
 
 ];

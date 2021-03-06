@@ -17,7 +17,7 @@ return [
     'userName' => 'පරිශීලක නම',
     'email' =>'විද්යුත් තැපෑල',
     'password' => 'මුර පදය',
-    'confirm_password'=>'මුරපදය තහවුරු කරන්න',
+    'password_confirmation'=>'මුරපදය තහවුරු කරන්න',
     'submit' => 'ලියාපදිංචි වන්න',
 
 ];
