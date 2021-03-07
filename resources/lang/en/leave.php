@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'Leave Form Akuressa Maha Vidyalaya' => 'Leave Form Akuressa Maha Vidyalaya',
+    'Leave_Form_Akuressa_Maha_Vidyalaya' => 'Leave Form Akuressa Maha Vidyalaya',
     'name' => 'Name',
     'designation' => 'Designation',
     'department' => 'Depatment',

@@ -6,7 +6,7 @@
                 <div id="leave-box" class="col-md-12">
                     <form id="leave-form" class="form" action="{{ url('/leave')}}" method="POST">
                         @csrf
-                        <h3 class="text-center text-info">{{__('leave.Leave Form Akuressa Maha Vidyalaya')}}</h3>
+                        <h3 class="text-center text-info">{{__('leave.Leave_Form_Akuressa_Maha_Vidyalaya')}}</h3>
                             <div class="form-group">
                                 <label for="name" class="text-info">{{__('leave.name')}}:</label><br>
                                 <input type="text" name="name" id="name" class="form-control">

@@ -46,4 +46,8 @@ Route::group([
     });
 
     Route::post('/signUpUser', [SignUpController::class, 'storeDataDb']);
+
+    Route::get('/leave', function (Request $request) {
+        return view('leave/leave');
+    });
 });
