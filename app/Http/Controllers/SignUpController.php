@@ -24,5 +24,6 @@ class SignUpController extends Controller
     $user->password = $request->input('password');
     $user->user_type = 1;
     $user->save();
+    return redirect('dashboard/dashboard');
   }
 }
