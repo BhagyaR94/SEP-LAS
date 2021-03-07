@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'Leave Form Akuressa Maha Vidyalaya' => 'படிவத்தை விட்டு விடுங்கள் அக்குரேசா மகா வித்யாலயா',
+    'Leave_Form_Akuressa_Maha_Vidyalaya' => 'படிவத்தை விட்டு விடுங்கள் அக்குரேசா மகா வித்யாலயா',
     'name' => 'பெயர்',
     'designation' => 'பதவி',
     'department' => 'துறை',

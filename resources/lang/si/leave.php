@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'Leave Form Akuressa Maha Vidyalaya' => '',
+    'Leave_Form_Akuressa_Maha_Vidyalaya' => 'නියාඩු ඉලලුම් පත්‍රය - අකුරැස්ස මහ විද්‍යාලය',
     'name' => 'නම',
     'designation' => 'තනතුර',
-    'department' => 'ෙදපාර්තෙම්න්තුෙව්',
+    'department' => 'දෙපාර්තෙම්න්තුව',
     'leave_type' => 'නිවාඩු වර්ගය',
     'casual_leave' => 'අනියම් නිවාඩු',
     'sick_leave' => 'ලෙඩ නිවාඩු',
