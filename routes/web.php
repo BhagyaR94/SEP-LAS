@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LeaveApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,11 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/sign_up', function () {
     return view('sign_up/sign_up');
 });
+
+##################Leave application routes##########################
+Route::get('/leave', [ LeaveApplicationController::class, 'create']);
+#Route::get('/leave/index', [ LeaveApplicationController::class, 'index']);
+Route::post('/leave', [ LeaveApplicationController::class, 'store']);
+
+
 

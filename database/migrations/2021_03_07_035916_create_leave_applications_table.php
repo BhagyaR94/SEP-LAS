@@ -15,6 +15,7 @@ class CreateLeaveApplicationsTable extends Migration
     {
         Schema::create('leave_applications', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
+            $table->integer('applicant_id')->nullable(false);
             $table->timestamps();
             $table->dateTIme('start_date')->nullable(false);
             $table->dateTime('end_date')->nullable(false);
@@ -22,13 +23,15 @@ class CreateLeaveApplicationsTable extends Migration
             $table->char('type',120)->nullable(false);
             $table->enum('half_day', ['morning','evening']);       
             $table->string('contact_location')->nullable(false);
-            $table->enum('status',['pending,approved,rejected'])->nullable(false);
+            $table->enum('status',['pending','approved','rejected'])->nullable(false);
             $table->integer('substitute_employee_id');
             $table->integer('supervisor_employee_id')->nullable(false);
-
+            
+            //constraints 
             //$table->primary('id');
-            $table->foreign('substitute_employee_id')->references('id')->on('employee');
-            $table->foreign('supervisor_employee_id')->references('id')->on('employee');           
+            $table->unique( ['applicant_id', 'start_date', 'end_date' ]);
+         #   $table->foreign('substitute_employee_id')->references('id')->on('employee');
+         #   $table->foreign('supervisor_employee_id')->references('id')->on('employee');           
         });
     }
 
