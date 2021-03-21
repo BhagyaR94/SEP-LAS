@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\LeaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,13 +42,15 @@ Route::group([
 
     Route::get('/logout', [AuthController::class, 'logout']);
 
-    Route::get('/sign_up', function (Request $request) {
+    Route::get('/sign_up', function () {
         return view('sign_up/sign_up');
     });
 
     Route::post('/signUpUser', [SignUpController::class, 'storeDataDb']);
 
-    Route::get('/leave', function (Request $request) {
+    Route::get('/leave', function () {
         return view('leave/leave');
     });
+
+    Route::get('/getLeavesByUserId', [LeaveController::class, 'getLeaveInformationByUserId']);
 });
