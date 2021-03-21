@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LeaveController;
 
+use App\Http\Controllers\RequstELeaves;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,4 +54,9 @@ Route::group([
     });
 
     Route::get('/getLeavesByUserId', [LeaveController::class, 'getLeaveInformationByUserId']);
+
+
+    Route::get('/e_leave_report', function () {
+        return view('e_leave_report/e_leave_report');
+    });   
 });
