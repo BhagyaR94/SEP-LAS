@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LeaveController;
-
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RequstELeaves;
 /*
 |--------------------------------------------------------------------------
@@ -58,5 +58,8 @@ Route::group([
 
     Route::get('/e_leave_report', function () {
         return view('e_leave_report/e_leave_report');
-    });   
+    });
+
+    Route::get('/getpdf', [PDFController::class, 'getpdf']);
+ 
 });
