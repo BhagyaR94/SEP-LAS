@@ -17,8 +17,8 @@ class CreateLeaveApplicationsTable extends Migration
             $table->integer('id')->autoIncrement();
             $table->integer('applicant_id')->nullable(false);
             $table->timestamps();
-            $table->dateTIme('start_date')->nullable(false);
-            $table->dateTime('end_date')->nullable(false);
+            $table->date('start_date')->nullable(false);
+            $table->date('end_date')->nullable(false);
             $table->string('reason',225)->nullable(false);
             $table->char('type',120)->nullable(false);
             $table->enum('half_day', ['morning','evening']);       

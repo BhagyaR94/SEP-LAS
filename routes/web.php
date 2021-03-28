@@ -42,9 +42,16 @@ Route::get('/sign_up', function () {
 });
 
 ##################Leave application routes##########################
-Route::get('/leave', [ LeaveApplicationController::class, 'create']);
-#Route::get('/leave/index', [ LeaveApplicationController::class, 'index']);
-Route::post('/leave', [ LeaveApplicationController::class, 'store']);
+/* 
+This route is bound to LeaveApplication Model. 
+Model is explicitly bound in RouteServiceProvider::boot() function.
+The route parameter is changed to {leaveApplication} from default {leaf}.
+Look for laravel resource controller mapping for route to controller function mapping.
+*/
+Route::resource('/leaves', LeaveApplicationController::class )->parameters([
+    'leaves' => 'leaveApplication'
+]);
+
 
 
 

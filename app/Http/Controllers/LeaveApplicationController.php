@@ -15,10 +15,11 @@ class LeaveApplicationController extends Controller
      */
     public function index()
     {   
-        //this has to be retireved form the session    
-        $employee_id =12;
-        $applications = LeaveApplication::where('applicant_id', $employee_id );
-        return view('leaves/leave_index', $applications);
+        //this has to be retireved from the session    
+        $employee_id = 12;
+        $applications = LeaveApplication::where('applicant_id', $employee_id )->get();
+
+        return view('leaves/leave_index', ["applications" => $applications] );
     }
 
     /**
@@ -58,11 +59,13 @@ class LeaveApplicationController extends Controller
         $leaveApp->applicant_id= $request->employee_id;
         $leaveApp->contact_location = $request->contact_location;
         $leaveApp->status = "pending";
-        $leaveApp->substitute_employee_id = 12;
+        
+        // below are dummy values set for the purpose of testing
+        #$leaveApp->substitute_employee_id = $request->substitute_employee_id;
         $leaveApp->supervisor_employee_id = 15;
 
         $leaveApp->save();
-        return Redirect::to('leave/index');
+        return Redirect::to('leaves');
     }
 
     /**
@@ -74,6 +77,8 @@ class LeaveApplicationController extends Controller
     public function show(LeaveApplication $leaveApplication)
     {
         //
+        //dd($leaveApplication);
+        print("show called");
     }
 
     /**
@@ -84,7 +89,9 @@ class LeaveApplicationController extends Controller
      */
     public function edit(LeaveApplication $leaveApplication)
     {
-        //
+        //dump($leaveApplication);
+        //print($leaveApplication);
+        return view('leaves/leave_edit', [ "applications" => $leaveApplication ] );
     }
 
     /**
@@ -96,7 +103,17 @@ class LeaveApplicationController extends Controller
      */
     public function update(Request $request, LeaveApplication $leaveApplication)
     {
-        //
+        $validate_data = $request->validate(
+            [
+                'start_date' => 'required|date',
+                'end_date' => 'required|date',
+                'leave_type' => 'required',
+                'employee_id' => 'required',
+                'contact_location' => 'required',
+            ]
+            );       
+        $leave = $leaveApplication->save();
+        return view('leaves/leave_edit', [ "messages" => "Your changes were saved!", "applications" => $leaveApplication ] );        
     }
 
     /**
@@ -107,6 +124,6 @@ class LeaveApplicationController extends Controller
      */
     public function destroy(LeaveApplication $leaveApplication)
     {
-        //
+        $leaveApplication->delete();
     }
 }
