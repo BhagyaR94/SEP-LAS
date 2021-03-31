@@ -72,4 +72,8 @@ Route::group([
     Route::get('/sendEmail', [NotificationController::class, 'sendEmail']);
 
     Route::get('/loadAvailableResources', [EmployeeController::class, 'loadAvailableResources']);
+    
+    Route::get('/material_attaching', function () {
+        return view('material_attaching/material_attaching');
+    });
 });
