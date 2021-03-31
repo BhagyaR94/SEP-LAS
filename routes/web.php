@@ -36,7 +36,7 @@ Route::get('/login/{locale}', function (Request $request) {
 });
 
 Route::group([
-    'middleware' => 'locale'
+    'middleware' => 'locale',
 ], function () {
     Route::post('/signIn', [AuthController::class, 'checkLoginData']);
 
@@ -60,8 +60,8 @@ Route::group([
 
     Route::post('/leave', [LeaveController::class, 'storeLeaveDataDb']);
 
-    Route::get('/e_leave_report', function () {
-        return view('e_leave_report/e_leave_report');
+    Route::get('/e_leave_report/{userId}', function (Request $request) {
+        return view('e_leave_report/e_leave_report')->with('user', $request->userId);
     });
 
     Route::get('/getpdf', [PDFController::class, 'getpdf']);
@@ -87,4 +87,7 @@ Route::group([
     Route::get('/rejectLeaveById/{leaveId}', [LeaveController::class, 'rejectLeaveById']);
 
     Route::get('/setPendingLeaveById/{leaveId}', [LeaveController::class, 'setPendingLeaveById']);
+    
+    Route::post('/requestEReport', [LeaveController::class, 'requestEReport']);
+
 });
