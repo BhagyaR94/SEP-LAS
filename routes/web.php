@@ -9,6 +9,7 @@ use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RequstELeaves;
+use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,12 +64,9 @@ Route::group([
 
     Route::get('/getpdf', [PDFController::class, 'getpdf']);
 
-    /*
-    This route is bound to LeaveApplication Model. 
-    Model is explicitly bound in RouteServiceProvider::boot() function.
-    */
-    Route::resource('/leaves', LeaveApplicationController::class )->parameters([
+    Route::resource('/leaves', LeaveApplicationController::class)->parameters([
         'leaves' => 'leaveApplication'
-    ]);    
- 
+    ]);
+
+    Route::get('/sendEmail', [NotificationController::class, 'sendEmail']);
 });
