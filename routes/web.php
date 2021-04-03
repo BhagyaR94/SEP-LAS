@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LeaveApplicationController;
-
+use Illuminate\Http\Request;
+use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\RequstELeaves;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,25 +24,45 @@ Route::get('/', function () {
     return view('splash/splash');
 });
 
-Route::get('/login/{locale}', function ($locale) {
-    if (!in_array($locale, ['en', 'si', 'ta'])) {
+Route::get('/login/{locale}', function (Request $request) {
+    if (!in_array($request->locale, ['en', 'si', 'ta'])) {
         abort(400);
     }
-    App::setLocale($locale);
+    $request->session()->put('session', $request->locale);
+    App::setLocale(session('session'));
     return view('login/login');
 });
 
-Route::post('/signIn', [AuthController::class, 'checkLoginData']);
+Route::group([
+    'middleware' => 'locale'
+], function () {
+    Route::post('/signIn', [AuthController::class, 'checkLoginData']);
 
-Route::get('/dashboard/{userId}', function () {
-    return view('dashboard/dashboard');
-});
+    Route::get('/dashboard/{userId}', function () {
+        return view('dashboard/dashboard');
+    });
 
-Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/sign_up', function () {
+        return view('sign_up/sign_up');
+    });
+
+    Route::post('/signUpUser', [SignUpController::class, 'storeDataDb']);
+
+    Route::get('/leave', function () {
+        return view('leave/leave');
+    });
+
+    Route::get('/getLeavesByUserId', [LeaveController::class, 'getLeaveInformationByUserId']);
 
 
-Route::get('/sign_up', function () {
-    return view('sign_up/sign_up');
+    Route::get('/e_leave_report', function () {
+        return view('e_leave_report/e_leave_report');
+    });
+
+    Route::get('/getpdf', [PDFController::class, 'getpdf']);
+ 
 });
 
 ##################Leave application routes##########################
@@ -51,7 +75,3 @@ Look for laravel resource controller mapping for route to controller function ma
 Route::resource('/leaves', LeaveApplicationController::class )->parameters([
     'leaves' => 'leaveApplication'
 ]);
-
-
-
-
