@@ -15,10 +15,10 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $userData = DB::select("select * from users where email = '" . $request->username . "'");
+        $userData = DB::select("select * from employees where email = '" . $request->username . "'");
         if (!empty($userData) && $request->password === $userData[0]->password) {
             $request->session()->flash('loggedInUser', $userData[0]);
-            return redirect('dashboard/'.$userData[0]->id);
+            return redirect('dashboard/' . $userData[0]->id);
         }
         return redirect()->back()->with('error', 'Invalid User Name or Password');;
     }
@@ -27,8 +27,7 @@ class AuthController extends Controller
     {
         if ($request->session('loggedInUser')) {
             $request->session()->forget('loggedInUser');
-            return redirect('login/'. App::getLocale());
+            return redirect('login/' . App::getLocale());
         }
     }
-   
 }
