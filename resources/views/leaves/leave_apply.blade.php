@@ -20,8 +20,8 @@
         <label for="contact_location">Contact Location: </label>
         <input name="contact_location">
         <br> <br>
-        <label for="substitue_employee_id">substitue employee id: </label>
-        <input name="substitue_employee_id">
+        <label for="substitute_employee_id">substitue employee id: </label>
+        <input name="substitute_employee_id" />
 
         <br> <br>
         <input type="submit" />
