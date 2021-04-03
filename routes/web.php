@@ -10,6 +10,7 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RequstELeaves;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,4 +70,6 @@ Route::group([
     ]);
 
     Route::get('/sendEmail', [NotificationController::class, 'sendEmail']);
+
+    Route::get('/loadAvailableResources', [EmployeeController::class, 'loadAvailableResources']);
 });
