@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LeaveApplicationController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LeaveController;
@@ -61,5 +62,13 @@ Route::group([
     });
 
     Route::get('/getpdf', [PDFController::class, 'getpdf']);
+
+    /*
+    This route is bound to LeaveApplication Model. 
+    Model is explicitly bound in RouteServiceProvider::boot() function.
+    */
+    Route::resource('/leaves', LeaveApplicationController::class )->parameters([
+        'leaves' => 'leaveApplication'
+    ]);    
  
 });
