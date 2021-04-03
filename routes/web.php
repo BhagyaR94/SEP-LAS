@@ -62,16 +62,13 @@ Route::group([
     });
 
     Route::get('/getpdf', [PDFController::class, 'getpdf']);
+
+    /*
+    This route is bound to LeaveApplication Model. 
+    Model is explicitly bound in RouteServiceProvider::boot() function.
+    */
+    Route::resource('/leaves', LeaveApplicationController::class )->parameters([
+        'leaves' => 'leaveApplication'
+    ]);    
  
 });
-
-##################Leave application routes##########################
-/* 
-This route is bound to LeaveApplication Model. 
-Model is explicitly bound in RouteServiceProvider::boot() function.
-The route parameter is changed to {leaveApplication} from default {leaf}.
-Look for laravel resource controller mapping for route to controller function mapping.
-*/
-Route::resource('/leaves', LeaveApplicationController::class )->parameters([
-    'leaves' => 'leaveApplication'
-]);
