@@ -25,4 +25,6 @@ class Employee extends Model
         'user_type',
     ];
 
+    protected $table = 'employee';
+
 }
