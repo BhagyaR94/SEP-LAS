@@ -57,7 +57,7 @@ Route::group([
     });
 
     Route::get('/getLeavesByUserId', [LeaveController::class, 'getLeaveInformationByUserId']);
-
+    Route::post('/leave', [LeaveController::class, 'storeLeaveDataDb']);
 
     Route::get('/e_leave_report', function () {
         return view('e_leave_report/e_leave_report');
