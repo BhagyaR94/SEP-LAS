@@ -57,6 +57,7 @@ Route::group([
     });
 
     Route::get('/getLeavesByUserId', [LeaveController::class, 'getLeaveInformationByUserId']);
+
     Route::post('/leave', [LeaveController::class, 'storeLeaveDataDb']);
 
     Route::get('/e_leave_report', function () {
@@ -72,8 +73,18 @@ Route::group([
     Route::get('/sendEmail', [NotificationController::class, 'sendEmail']);
 
     Route::get('/loadAvailableResources', [EmployeeController::class, 'loadAvailableResources']);
-    
+
     Route::get('/material_attaching', function () {
         return view('material_attaching/material_attaching');
     });
+
+    Route::get('/getAllPendingLeaves', [LeaveController::class, 'getAllPendingLeaves']);
+
+    Route::get('/getAllApprovedLeaves', [LeaveController::class, 'getAllApprovedLeaves']);
+
+    Route::get('/approveLeaveById/{leaveId}', [LeaveController::class, 'approveLeaveById']);
+
+    Route::get('/rejectLeaveById/{leaveId}', [LeaveController::class, 'rejectLeaveById']);
+
+    Route::get('/setPendingLeaveById/{leaveId}', [LeaveController::class, 'setPendingLeaveById']);
 });

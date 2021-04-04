@@ -12,6 +12,7 @@ class LeaveController extends Controller
     {
         return DB::table('leave_applications')->where('user_id', $request->id)->get();
     }
+
     public function storeLeaveDataDb(Request $request)
     {
         $this->validate($request, [
@@ -39,5 +40,33 @@ class LeaveController extends Controller
         $leavedeatails->substitute_employee_id = $request->input('backupersonname');
         $leavedeatails->save();
         return redirect('dashboard/dashboard');
+    }
+
+    public function getAllPendingLeaves()
+    {
+        return view('leave/view_leaves')->with('leaves', DB::table('leave_applications')->where('status', 'pending')->get());
+    }
+
+    public function getAllApprovedLeaves()
+    {
+        return view('leave/view_users_on_leave')->with('leaves', DB::table('leave_applications')->where('status', 'approved')->get());
+    }
+
+    public function approveLeaveById(Request $request)
+    {
+        DB::table('leave_applications')->where('id', $request->leaveId)->update(['status' => 'approved']);
+        return view('dashboard/dashboard')->with('successMsg','Property is updated .');;
+    }
+
+    public function rejectLeaveById(Request $request)
+    {
+        DB::table('leave_applications')->where('id', $request->leaveId)->update(['status' => 'rejected']);
+        return view('dashboard/dashboard')->with('successMsg','Property is updated .');;
+    }
+
+    public function setPendingLeaveById(Request $request)
+    {
+        DB::table('leave_applications')->where('id', $request->leaveId)->update(['status' => 'pending']);
+        return view('dashboard/dashboard')->with('successMsg','Property is updated .');;
     }
 }
