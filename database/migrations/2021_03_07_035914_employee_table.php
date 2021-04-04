@@ -13,7 +13,7 @@ class EmployeeTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('employee', function (Blueprint $table) {
             $table->integer('id')->autoIncrement(); 
             $table->timestamps();
             $table->string('full_name')->nullable(false);
