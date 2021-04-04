@@ -14,14 +14,13 @@ class AuthController extends Controller
             'username' => 'required|min:3',
             'password' => 'required'
         ]);
-
-        // $userData = DB::select("SELECT * FROM employee WHERE email = '" . $request->username . "'");
-        return  DB::select("SELECT * FROM employee");
-        // if (!empty($userData) && $request->password === $userData[0]->password) {
-        //     $request->session()->flash('loggedInUser', $userData[0]);
-        //     return redirect('dashboard/' . $userData[0]->id);
-        // }
-        // return redirect()->back()->with('error', 'Invalid User Name or Password');;
+        $query = "SELECT * FROM employee WHERE email = '" . $request->username . "'";
+        $userData = DB::select($query);
+        if (!empty($userData) && $request->password === $userData[0]->password) {
+            $request->session()->flash('loggedInUser', $userData[0]);
+            return redirect('dashboard/' . $userData[0]->id);
+        }
+        return redirect()->back()->with('error', 'Invalid User Name or Password');;
     }
 
     public function logout(Request $request)
