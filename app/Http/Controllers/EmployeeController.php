@@ -9,8 +9,8 @@ class EmployeeController extends Controller
 {
     public function loadAvailableResources(Request $request)
     {
-        $userData = DB::select("SELECT * FROM employee WHERE id NOT IN (SELECT applicant_id FROM leave_applications WHERE start_date >= '2020-02-10' AND end_date <= '2020-02-10')
-        ");
+        $query = "SELECT * FROM employee WHERE id NOT IN (SELECT applicant_id FROM leave_applications WHERE start_date >= '".$request->start_date."' AND end_date <= '".$request->end_date."')";
+        $userData = DB::select($query);
         return $userData;
     }
 }

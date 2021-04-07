@@ -90,4 +90,7 @@ Route::group([
     
     Route::post('/requestEReport', [LeaveController::class, 'requestEReport']);
 
+    Route::get('checkAjax', function () {
+        echo "AJAX HERE";
+    });
 });

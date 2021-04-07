@@ -45,10 +45,7 @@
                         </div>
                         <div class="dropdown">
                             <label for="Backup Person Name" class="text-info">{{__('leave.Backup_Person_Name')}}</label><br>
-                            <select class="form-select" name="backupersonname" aria-label="Default select example">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                            <select class="form-select" id="backupersonname" name="backupersonname" aria-label="Default select example">
                             </select>
                         </div>
                         <br>
@@ -66,6 +63,7 @@
                             </div>
                         </div>
                     </form>
+
                     @if($errors->any())
                     <div class="alert alert-danger">
                         <ul>
