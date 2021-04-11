@@ -2,7 +2,7 @@
     <div>
     <form method="POST" action="/leaves" >
         @csrf
-        <label for="start_date">Start date for your leave: </label>
+        <label for="start_date">Start date for your leave: {{__('leave.date')}} </label>
         <input name="start_date" type="date" /> <br>
         <label for="end_date">End date for your leave: </label>
         <input name="end_date" type="date" /> <br>

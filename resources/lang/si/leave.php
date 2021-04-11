@@ -22,6 +22,8 @@ return [
     'sick_leave' => 'ලෙඩ නිවාඩු',
     'other' => 'අනික්',
     'date' => 'දිනය',
+    'start_date' => 'නිවාඩු පටන් ගන්නා දිනය ',
+    'end_date' => 'නිවාඩු අවසන් වන දිනය ',
     'Number_Of_Days_Apply' => 'අයදුම් කරන දින ගණන',
     'Reason' => 'හේතුව',
     'First_Appoinment_Date' => 'පළමු පත්වීම් දිනය',
