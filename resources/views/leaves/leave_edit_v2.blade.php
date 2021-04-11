@@ -1,6 +1,6 @@
 @extends('layouts.master')
 <script>
- function test()
+ function enableInputs()
  {
     var inputs = document.getElementsByTagName('input');
 
@@ -24,7 +24,7 @@
                         @csrf
                         <h3 class="text-center text-info">{{__('leave.Leave_Form_Akuressa_Maha_Vidyalaya')}}</h3>
                         <div class="form-group">
-                            <input name="edit" class="btn btn-info btn-md" value="Edit" onclick="test()">
+                            <input name="edit" class="btn btn-info btn-md" value="Edit" onclick="enableInputs()">
                         </div>
                             <div class="form-group">
                                 <label for="name" class="text-info">{{__('leave.name')}}:</label><br>
