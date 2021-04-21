@@ -24,6 +24,8 @@ class CreateLeaveApplicationsTable extends Migration
             $table->string('leave_type', 50)->nullable(false);
             $table->string('contact_location')->nullable(false);
             $table->integer('telephone')->nullable(true);
+            $table->text('material_name')->nullable(true);
+            $table->text('material_path')->nullable(true);
             $table->enum('status', ['pending', 'approved', 'rejected'])->nullable(false);
             $table->integer('substitute_employee_id')->nullable(true);
             $table->integer('supervisor_employee_id')->nullable(true);

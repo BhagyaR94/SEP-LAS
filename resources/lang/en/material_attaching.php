@@ -16,10 +16,7 @@ return [
     'Materials_Attaching_Form' => 'Materials Attaching Form',
     'Subject' => 'Subject1',
     'File1' => 'File1',
-    'File2' => 'File2',
-    'File3' => 'File3',
     'upload' => 'upload',
-    'close' => 'close',
     'cancel' => 'cancel',
     'OK' => 'OK',
     

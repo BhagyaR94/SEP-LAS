@@ -23,7 +23,6 @@
                             <label for="initials" class="text-info">{{__('sign_up.initials')}}:</label><br>
                             <input type="text" name="initials" id="initials" class="form-control">
                         </div>
-
                         <div class="form-group">
                             <label for="last_name" class="text-info">{{__('sign_up.lastName')}}:</label><br>
                             <input type="text" name="last_name" id="last_name" class="form-control">
