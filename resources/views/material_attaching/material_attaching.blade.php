@@ -4,29 +4,34 @@
         <div id="material_attaching-row" class="row justify-content-center">
             <div id="material_attaching-column" class="col-md-6">
                 <div id="material_attaching-box" class="col-md-12">
-                    <form id="material_attaching-form" class="form" action="{{ url('/material_attaching')}}" method="POST">
+                    <form id="material_attaching-form" class="form" action="{{ url('/material_attaching')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <h3 class="text-center text-info">{{__('material_attaching.Materials_Attaching_Form')}}</h3>
-                        <div class="form-group">
-                            <label for="Subject" class="text-info">{{__('material_attaching.Subject')}}:</label><br>
-                            <input type="text" name="Subject" id="Subject" class="form-control">
+                        @csrf
+                        @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <strong>{{ $message }}</strong>
                         </div>
-                        <div class="form-group">
-                            <label for="File1" class="text-info">{{__('material_attaching.File1')}}:</label><br>
-                            <input type="button" name="upload" class="btn btn-info btn-md" value="{{__('material_attaching.upload')}}">
-                            <button type="button" class="btn-close" aria-label="close"></button>
-                        </div>
+                        @endif
 
-                        <div class="form-group">
-                            <label for="File2" class="text-info">{{__('material_attaching.File2')}}:</label><br>
-                            <input type="button" name="upload" class="btn btn-info btn-md" value="{{__('material_attaching.upload')}}">
-                            <button type="button" class="btn-close" aria-label="close" btn-close-color:$white></button>
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-
-                        <div class="form-group">
-                            <label for="File3" class="text-info">{{__('material_attaching.File3')}}:</label><br>
-                            <input type="button" name="upload" class="btn btn-info btn-md" value="{{__('material_attaching.upload')}}">
-                            <button type="button" class="btn-close" aria-label="close"></button>
+                        @endif
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <label for="Subject" class="text-info">{{__('material_attaching.Subject')}}:</label><br>
+                                <input type="text" name="Subject" id="Subject" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label for="File1" class="text-info">{{__('material_attaching.File1')}}:</label><br>
+                                <input type="file" name="file" class="btn btn-info btn-md" value="{{__('material_attaching.upload')}}">
+                            </div>
                         </div>
                         <br>
                         <div class="form-group">

@@ -34,7 +34,7 @@ class LeaveController extends Controller
         $leavedeatails->end_date = $request->input('enddate');
         $leavedeatails->number_of_days = $request->input('numberofdateapply');
         $leavedeatails->reason = $request->input('reason');
-        $leavedeatails->type = $request->input('leave_type');
+        $leavedeatails->leave_type = $request->input('leave_type');
         $leavedeatails->contact_location = $request->input('address');
         $leavedeatails->telephone = $request->input('telno');
         $leavedeatails->status = $request->input('leavestatus');

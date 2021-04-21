@@ -11,6 +11,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RequstELeaves;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MaterialAttaching;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,10 +75,6 @@ Route::group([
 
     Route::get('/loadAvailableResources', [EmployeeController::class, 'loadAvailableResources']);
 
-    Route::get('/material_attaching', function () {
-        return view('material_attaching/material_attaching');
-    });
-
     Route::get('/getAllPendingLeaves', [LeaveController::class, 'getAllPendingLeaves']);
 
     Route::get('/getAllApprovedLeaves', [LeaveController::class, 'getAllApprovedLeaves']);
@@ -87,10 +84,17 @@ Route::group([
     Route::get('/rejectLeaveById/{leaveId}', [LeaveController::class, 'rejectLeaveById']);
 
     Route::get('/setPendingLeaveById/{leaveId}', [LeaveController::class, 'setPendingLeaveById']);
-    
+
     Route::post('/requestEReport', [LeaveController::class, 'requestEReport']);
 
     Route::get('checkAjax', function () {
         echo "AJAX HERE";
     });
+ 
+    //Route::get('/material_attaching', [MaterialAttaching::class, 'createForm']);
+    Route::get('/material_attaching', function () {
+        return view('material_attaching/material_attaching');
+    });
+    
+    Route::post('/material_attaching', [MaterialAttaching::class, 'fileUpload'])->name('fileUpload');
 });
