@@ -90,12 +90,11 @@ Route::group([
     Route::get('checkAjax', function () {
         echo "AJAX HERE";
     });
-
+ 
     //Route::get('/material_attaching', [MaterialAttaching::class, 'createForm']);
     Route::get('/material_attaching', function () {
         return view('material_attaching/material_attaching');
     });
     
     Route::post('/material_attaching', [MaterialAttaching::class, 'fileUpload'])->name('fileUpload');
-
 });

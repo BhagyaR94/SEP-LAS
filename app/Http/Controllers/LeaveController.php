@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\LeaveApplication;
+use App\Http\Controllers\PDFController;
 
 class LeaveController extends Controller
 {
@@ -68,5 +69,14 @@ class LeaveController extends Controller
     {
         DB::table('leave_applications')->where('id', $request->leaveId)->update(['status' => 'pending']);
         return view('dashboard/dashboard')->with('successMsg','Property is updated .');;
+    }
+
+    public function requestEReport(Request $request){
+        $leaveQuery  = "SELECT * FROM leave_applications WHERE applicant_id = ". $request->id ."  AND  start_date >= '". $request->start_date ."' AND  end_date <= '".$request->end_date."'";
+        $leaveData = DB::select($leaveQuery);
+        $userQuery = "SELECT * FROM employee WHERE id = ". $request->id;
+        $userData = DB::select($userQuery);
+        $pdfController = new PDFController();
+        return $pdfController->generateLeaveFormPDF($userData, $leaveData);
     }
 }
