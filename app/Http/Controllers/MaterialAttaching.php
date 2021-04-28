@@ -30,9 +30,10 @@ class MaterialAttaching extends Controller
             $fileModel->name = time() . '_' . $req->file->getClientOriginalName();
             $fileModel->file_path = '/storage/' . $filePath;
             $fileModel->save();
-            return back()
-                ->with('success', 'File has been uploaded.')
-                ->with('file', $fileName);
+            // return back()
+            //     ->with('success', 'File has been uploaded.')
+            //     ->with('file', $fileName);
+            return redirect('dashboard/dashboard')->with('success', 'File has been uploaded.');
         }
     }
 }
