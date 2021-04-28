@@ -97,4 +97,6 @@ Route::group([
     });
     
     Route::post('/material_attaching', [MaterialAttaching::class, 'fileUpload'])->name('fileUpload');
+
+    Route::get('/leave_summary/{user_id}', [LeaveController::class, 'loadLeaveSummary']);
 });

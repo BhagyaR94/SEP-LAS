@@ -32,6 +32,11 @@ return [
     'Leave_Status' => 'Leave_Status',
     'submit' => 'Submit',
     'submit1' => 'Cancel',
+    'requestereport' => 'Request E Report',
+    'pending' => 'Pending Leaves',
+    'approved' => 'Approved Leaves',
+    'applyleaves' => 'Apply Leaves',
+    'viewleaves' => 'View Leave Summary',
 
 
 ];

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'user_name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => 'admin',
-            'user_type' => '1',
+            'user_type' => '2',
         ]);
     }
 }

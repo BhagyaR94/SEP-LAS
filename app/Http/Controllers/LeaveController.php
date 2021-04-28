@@ -79,4 +79,16 @@ class LeaveController extends Controller
         $pdfController = new PDFController();
         return $pdfController->generateLeaveFormPDF($userData, $leaveData);
     }
+
+    public function loadLeaveSummary(Request $request)
+    {
+        $currentYear = now()->year;
+        $startDate = $currentYear.'01-01';
+        $endDate = $currentYear.'12-31';
+        $leaveQueryCasual = "SELECT COUNT(*) AS CASUAL FROM leave_applications WHERE applicant_id = " .$request->user_id. " AND start_date >= '".$startDate."' AND end_date <= '".$endDate."' AND STATUS='approved' AND leave_type LIKE '%c%'";
+        $casualLeaveCount = DB::select($leaveQueryCasual)[0];
+        $leaveQueryMedical = "SELECT COUNT(*) AS MEDICAL FROM leave_applications WHERE applicant_id = " .$request->user_id. " AND start_date >= '".$startDate."' AND end_date <= '".$endDate."' AND STATUS='approved' AND leave_type LIKE '%m%'";
+        $medicalLeaveCount = DB::select($leaveQueryMedical)[0];
+        return view('leave/leave_summary', ['casual_count'=> $casualLeaveCount->CASUAL, 'medical_count'=>$medicalLeaveCount->MEDICAL]);
+    }
 }
