@@ -30,13 +30,6 @@
         <a class="card-body btn btn-primary" href="{{url('/getAllApprovedLeaves')}}">{{__('leave.approved')}}</a>
       </div>
     </div>
-
-    <div class="col-xs-3 col-md-3">
-      <div class="card thumbnail">
-        <a class="card-body btn btn-primary" href="{{'/e_leave_report/'.Session::get('loggedInUser')->id}}">{{__('leave.requestereport')}}</a>
-      </div>
-    </div>
-
   </div>
   @endif
 
@@ -50,13 +43,17 @@
         <a class="card-body btn btn-primary " href="{{url('/leave')}}">{{__('leave.applyleaves')}}</a>
       </div>
     </div>
-<hr>
+    <hr>
     <div class="col-xs-3 col-md-3">
       <div class="card thumbnail">
         <a class="card-body btn btn-primary " href="{{'/leave_summary/'.Session::get('loggedInUser')->id}}">{{__('leave.viewleaves')}}</a>
       </div>
     </div>
-
+    <div class="col-xs-3 col-md-3">
+      <div class="card thumbnail">
+        <a class="card-body btn btn-primary" href="{{'/e_leave_report/'.Session::get('loggedInUser')->id}}">{{__('leave.requestereport')}}</a>
+      </div>
+    </div>
   </div>
   @endif
   <!--End Teacher's Menu-->
