@@ -20,7 +20,7 @@ class AuthController extends Controller
             $request->session()->flash('loggedInUser', $userData[0]);
             return redirect('dashboard/' . $userData[0]->id);
         }
-        return redirect()->back()->with('error', 'Invalid User Name or Password');;
+        return redirect()->back()->with('error', 'Invalid User Name or Password');
     }
 
     public function logout(Request $request)

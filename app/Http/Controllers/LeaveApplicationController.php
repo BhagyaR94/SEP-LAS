@@ -63,8 +63,6 @@ class LeaveApplicationController extends Controller
         // below are dummy values set for the purpose of testing
         $leaveApp->substitute_employee_id = $request->substitute_employee_id;
         $leaveApp->supervisor_employee_id = 15;
-
-        //print($request);
         $leaveApp->save();
         return Redirect::to('leaves');
     }
@@ -77,8 +75,6 @@ class LeaveApplicationController extends Controller
      */
     public function show(LeaveApplication $leaveApplication)
     {
-        //
-        //dd($leaveApplication);
         print("show called");
     }
 
@@ -90,8 +86,6 @@ class LeaveApplicationController extends Controller
      */
     public function edit(LeaveApplication $leaveApplication)
     {
-        //dump($leaveApplication);
-        //print($leaveApplication);
         return view('leaves/leave_edit', [ "applications" => $leaveApplication ] );
     }
 

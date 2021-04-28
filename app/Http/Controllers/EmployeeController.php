@@ -10,7 +10,6 @@ class EmployeeController extends Controller
     public function loadAvailableResources(Request $request)
     {
         $query = "SELECT * FROM employee WHERE id NOT IN (SELECT applicant_id FROM leave_applications WHERE start_date >= '".$request->start_date."' AND end_date <= '".$request->end_date."')";
-        $userData = DB::select($query);
-        return $userData;
+        return DB::select($query);
     }
 }

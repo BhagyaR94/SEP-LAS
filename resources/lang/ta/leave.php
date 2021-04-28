@@ -32,6 +32,11 @@ return [
     'Leave_Status' => 'நிலையை விட்டு விடுங்கள்',
     'submit' => 'சமர்ப்பிக்கவும்',
     'submit1' => 'ரத்துசெய்',
+    'requestereport' => 'Request E Report',
+    'pending' => 'Pending Leaves',
+    'approved' => 'Approved Leaves',
+    'applyleaves' => 'Apply Leaves',
+    'viewleaves' => 'View Leave Summary',
 
 
 ];
