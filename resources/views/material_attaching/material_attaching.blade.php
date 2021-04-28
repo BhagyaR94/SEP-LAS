@@ -1,4 +1,5 @@
 @extends('layouts.master')
+<h1>{{$leave}}</h1>
 <div id="material-attaching">
     <div class="container">
         <div id="material_attaching-row" class="row justify-content-center">
@@ -25,6 +26,7 @@
                         @endif
                         <div class="row align-items-start">
                             <div class="col">
+                                <input type="hidden" name="leave_app_id" id="leave_app_id" value="{{$leave}}" class="form-control">
                                 <label for="Subject" class="text-info">{{__('material_attaching.Subject')}}:</label><br>
                                 <input type="text" name="Subject" id="Subject" class="form-control">
                             </div>
@@ -45,22 +47,24 @@
                         <div class="form-group">
                             <div class="Row align-items-center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('material_attaching.cancel')}}">
+                                    <a class="btn btn-info btn-md" href="{{url('/dashboard/dashboard')}}">{{__('material_attaching.cancel')}}</a>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                    @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $errorItem)
-                            <li>{{$errorItem}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
                 </div>
+
+                </form>
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $errorItem)
+                        <li>{{$errorItem}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
             </div>
         </div>
     </div>
+</div>
 </div>
