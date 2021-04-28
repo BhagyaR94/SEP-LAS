@@ -27,7 +27,7 @@
                             <br>
                             <div class="Row align-items-center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <input type="button" name="cancel" class="btn btn-info btn-md" value="{{__('e_leave_report.submit1')}}">
+                                    <a class="btn btn-info btn-md" name="cancel" href="{{url('/dashboard/dashboard')}}">{{__('e_leave_report.submit1')}}</a>
                                 </div>
                             </div>
                         </div>

@@ -24,10 +24,7 @@ class LeaveController extends Controller
             'reason' => 'required',
             'address' => 'required',
         ]);
-
-
-        // $session_id = session('loggedInUser')->id;
-        //$userData = DB::select("select * from employee where id = '" . $session_id . "'");
+        
         $leavedeatails = new LeaveApplication();
         $leavedeatails->applicant_id = 1;
         $leavedeatails->start_date = $request->input('startdate');
@@ -40,7 +37,7 @@ class LeaveController extends Controller
         $leavedeatails->status = $request->input('leavestatus');
         $leavedeatails->substitute_employee_id = $request->input('backupersonname');
         $leavedeatails->save();
-        return redirect('dashboard/dashboard');
+        return view('material_attaching/material_attaching')->with('leave',$leavedeatails->id);
     }
 
     public function getAllPendingLeaves()
