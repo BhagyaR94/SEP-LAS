@@ -1,5 +1,4 @@
 @extends('layouts.master')
-<h1>{{$leave}}</h1>
 <div id="material-attaching">
     <div class="container">
         <div id="material_attaching-row" class="row justify-content-center">
