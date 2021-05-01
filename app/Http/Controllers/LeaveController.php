@@ -53,19 +53,19 @@ class LeaveController extends Controller
     public function approveLeaveById(Request $request)
     {
         DB::table('leave_applications')->where('id', $request->leaveId)->update(['status' => 'approved']);
-        return view('dashboard/dashboard')->with('successMsg','Property is updated .');;
+        return redirect('dashboard/dashboard')->withErrors('successMsg','Property is updated .');
     }
 
     public function rejectLeaveById(Request $request)
     {
         DB::table('leave_applications')->where('id', $request->leaveId)->update(['status' => 'rejected']);
-        return view('dashboard/dashboard')->with('successMsg','Property is updated .');;
+        return redirect('dashboard/dashboard')->withErrors('successMsg','Property is updated .');
     }
 
     public function setPendingLeaveById(Request $request)
     {
         DB::table('leave_applications')->where('id', $request->leaveId)->update(['status' => 'pending']);
-        return view('dashboard/dashboard')->with('successMsg','Property is updated .');;
+        return redirect('dashboard/dashboard')->withErrors('successMsg','Property is updated .');
     }
 
     public function requestEReport(Request $request){

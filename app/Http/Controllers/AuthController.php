@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -17,7 +19,7 @@ class AuthController extends Controller
         $query = "SELECT * FROM employee WHERE email = '" . $request->username . "'";
         $userData = DB::select($query);
         if (!empty($userData) && $request->password === $userData[0]->password) {
-            $request->session()->flash('loggedInUser', $userData[0]);
+            Session::push('loggedInUser', $userData[0]);
             return redirect('dashboard/' . $userData[0]->id);
         }
         return redirect()->back()->with('error', 'Invalid User Name or Password');
