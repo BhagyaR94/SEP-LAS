@@ -1,5 +1,5 @@
 @extends('layouts.master')
-<h1></h1>
+@extends('layouts.actions')
 <div id="sign_up">
     <div class="container">
         <div id="sign_up-row" class="row justify-content-center">
@@ -70,10 +70,12 @@
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                         </div>
 
-                        <div class="form-group">
-
-                            <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('sign_up.submit')}}">
+                        <div class="Row  align-items-center">
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('sign_up.submit')}}">
+                            </div>
                         </div>
+
 
                     </form>
                     @if($errors->any())

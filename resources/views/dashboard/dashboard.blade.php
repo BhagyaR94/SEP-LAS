@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@extends('layouts.actions')
 
 <div class="container container-sm mx-auto">
 
@@ -11,10 +12,16 @@
 
   <!-- Admin's Menu Menu-->
   @if(session('loggedInUser') && Session::get('loggedInUser')[0]->user_type === 2)
-  <div class="row">
+  <div class="row align-items-center">
     <div class="col-xs-3 col-md-3">
       <div class="card thumbnail">
         <a class="card-body btn btn-primary " href="{{url('/sign_up')}}">{{__('sign_up.Sign_Up')}}</a>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-md-3">
+      <div class="card thumbnail">
+        <a class="card-body btn btn-primary " href="{{url('/loadEmployees')}}">{{__('sign_up.users')}}</a>
       </div>
     </div>
 
@@ -37,7 +44,7 @@
 
   <!-- Teacher's Menu-->
   @if(session('loggedInUser') && Session::get('loggedInUser')[0]->user_type === 1)
-  <div class="row">
+  <div class="row align-items-center">
     <div class="col-xs-3 col-md-3">
       <div class="card thumbnail">
         <a class="card-body btn btn-primary " href="{{url('/leave')}}">{{__('leave.applyleaves')}}</a>
@@ -57,16 +64,6 @@
   </div>
   @endif
   <!--End Teacher's Menu-->
-
-  <br>
-
-  <div class="row">
-    <div class="col-xs-3 col-md-3">
-      <div class="card thumbnail">
-        <a href="{{url('/logout')}}" class="btn btn-danger">Logout</a>
-      </div>
-    </div>
-  </div>
 </div>
 
 @if(!empty($successMsg))

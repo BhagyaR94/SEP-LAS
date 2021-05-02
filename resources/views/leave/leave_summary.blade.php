@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@extends('layouts.actions')
 <div class="container">
     <table class="table table-dark">
         <thead>

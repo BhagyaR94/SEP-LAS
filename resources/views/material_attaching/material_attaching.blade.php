@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <div class="Row align-items-center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a class="btn btn-info btn-md" href="{{url('/dashboard/dashboard')}}">{{__('material_attaching.cancel')}}</a>
+                                    <a class="btn btn-info btn-md" href="{{url('dashboard/dashboard')}}">{{__('material_attaching.cancel')}}</a>
                                 </div>
                             </div>
                         </div>
