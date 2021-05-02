@@ -46,7 +46,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="Reserved Person Name" class="text-info">{{__('leave.Reserved_Person_Name')}}:</label><br>
+                               <!--
                                 <input type="text" name="reservedpersonname" id="reservedpersonname" class="form-control">
+                               -->
+                                <select name="leave_type" id="leave_type">
+                                    @foreach ($teachers as $teacher)
+                                    <option value= "{{ $teacher->full_name }}" > {{ $teacher->full_name }} </option>    
+                                    @endforeach                               
+                                </select>       
                             </div>
                             <div class="form-group">
                                 <label for="Address When On Leave" class="text-info">{{__('leave.Address_When_On_Leave')}}:</label><br>

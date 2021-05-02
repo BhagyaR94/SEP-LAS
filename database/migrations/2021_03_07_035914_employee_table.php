@@ -13,7 +13,7 @@ class EmployeeTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->integer('id')->autoIncrement(); 
             $table->timestamps();
             $table->string('full_name')->nullable(false);
@@ -24,9 +24,7 @@ class EmployeeTable extends Migration
             $table->string('primary_address')->nullable(false);
             $table->string('secondary_address')->nullable(false);
             $table->string('primary_contact')->nullable(false);
-            $table->string('secondary_contact')->nullable(false);
-
-            
+            $table->string('secondary_contact')->nullable(false);            
         });
     }
 
@@ -37,6 +35,6 @@ class EmployeeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee');
+        Schema::dropIfExists('employees');
     }
 }

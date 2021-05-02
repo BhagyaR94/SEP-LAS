@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LeaveApplication;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Http\Request;
 use Redirect;
 
@@ -28,8 +29,8 @@ class LeaveApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('leaves/leave_apply');
+    {        
+        return view('leaves/leave_apply_v2', ["teachers" => EmployeeController::getTeachersList()] );
     }
 
     /**
@@ -40,33 +41,38 @@ class LeaveApplicationController extends Controller
      */
     public function store(Request $request)
     {
+        dump($request);
+
+        
         $validate_data = $request->validate(
             [
                 'start_date' => 'required|date',
                 'end_date' => 'required|date',
                 'leave_type' => 'required',
-                'employee_id' => 'required',
                 'contact_location' => 'required',
 
             ]
             );       
         $leaveApp = new LeaveApplication();
-
+        
+        $leaveApp->applicant_id = 12;
         $leaveApp->start_date = $request->start_date;
         $leaveApp->end_date = $request->end_date;
         $leaveApp->reason = "test";
         $leaveApp->type = $request->leave_type;
-        $leaveApp->applicant_id= $request->employee_id;
+        //$leaveApp->applicant_id= $request->employee_id;
         $leaveApp->contact_location = $request->contact_location;
         $leaveApp->status = "pending";
         
         // below are dummy values set for the purpose of testing
-        $leaveApp->substitute_employee_id = $request->substitute_employee_id;
+       // $leaveApp->substitute_employee_id = $request->substitute_employee_id;
+        $leaveApp->substitute_employee_id = 15;
         $leaveApp->supervisor_employee_id = 15;
 
         //print($request);
         $leaveApp->save();
         return Redirect::to('leaves');
+    
     }
 
     /**
@@ -92,7 +98,7 @@ class LeaveApplicationController extends Controller
     {
         //dump($leaveApplication);
         //print($leaveApplication);
-        return view('leaves/leave_edit', [ "applications" => $leaveApplication ] );
+        return view('leaves/leave_edit_v2', [ "applications" => $leaveApplication ] );
     }
 
     /**

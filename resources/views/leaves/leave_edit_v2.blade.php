@@ -1,4 +1,5 @@
 @extends('layouts.master')
+<!-- This function enables the inputs when edit button is clicked -->
 <script>
  function enableInputs()
  {
