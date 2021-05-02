@@ -15,7 +15,7 @@ return [
 
     'Sign_Up' => 'ලියාපදිංචි වන්න',
     'userName' => 'පරිශීලක නම',
-    'fullName' => 'සම්පූර්ණ  නම ',
+    'fullName' => 'මුල් නම ',
     'initials' => 'මුලකුරු ',
     'lastName' => 'අවසන් නම ',
     'designation' => 'තනතුර ',
@@ -28,5 +28,9 @@ return [
     'password' => 'මුර පදය',
     'confirm_password'=>'මුරපදය තහවුරු කරන්න',
     'submit' => 'ලියාපදිංචි වන්න',
+    'users' => 'පරිශීලකයින් ',
+    'action' => 'විධාන',
+    'home' => 'ප්‍රධාන මෙනුව',
+    'logout' => 'ඉවත් වෙන්න'
 
 ];

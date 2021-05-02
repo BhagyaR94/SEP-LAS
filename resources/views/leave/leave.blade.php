@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@extends('layouts.actions')
 <div id="leave">
     <div class="container">
         <div id="leave-row" class="row justify-content-center">

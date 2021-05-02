@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PDFController;
-use App\Http\Controllers\RequstELeaves;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MaterialAttaching;
+use App\Http\Controllers\LocaleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,12 +86,7 @@ Route::group([
     Route::get('/setPendingLeaveById/{leaveId}', [LeaveController::class, 'setPendingLeaveById']);
 
     Route::post('/requestEReport', [LeaveController::class, 'requestEReport']);
-
-    Route::get('checkAjax', function () {
-        echo "AJAX HERE";
-    });
  
-    //Route::get('/material_attaching', [MaterialAttaching::class, 'createForm']);
     Route::get('/material_attaching', function () {
         return view('material_attaching/material_attaching');
     });
@@ -99,4 +94,10 @@ Route::group([
     Route::post('/material_attaching', [MaterialAttaching::class, 'fileUpload'])->name('fileUpload');
 
     Route::get('/leave_summary/{user_id}', [LeaveController::class, 'loadLeaveSummary']);
+
+    Route::get('/loadEmployees', [EmployeeController::class, 'loadAllEmployees']);
+
+    Route::get('/deleteUserById/{user_id}', [EmployeeController::class, 'deleteUserById']);
+
+    Route::get('/changeLocale/{locale}', [LocaleController::class, 'setLocale']);
 });

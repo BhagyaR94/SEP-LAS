@@ -32,11 +32,11 @@ return [
     'Leave_Status' => 'நிலையை விட்டு விடுங்கள்',
     'submit' => 'சமர்ப்பிக்கவும்',
     'submit1' => 'ரத்துசெய்',
-    'requestereport' => 'Request E Report',
-    'pending' => 'Pending Leaves',
-    'approved' => 'Approved Leaves',
-    'applyleaves' => 'Apply Leaves',
-    'viewleaves' => 'View Leave Summary',
+    'requestereport' => 'கோரிக்கை மின் அறிக்கை',
+    'pending' => 'நிலுவையில் உள்ள இலைகள்',
+    'approved' => 'அங்கீகரிக்கப்பட்ட இலைகள்',
+    'applyleaves' => 'இலைகளைப் பயன்படுத்துங்கள்',
+    'viewleaves' => 'விடுப்பு சுருக்கத்தைக் காண்க',
 
 
 ];

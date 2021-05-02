@@ -15,7 +15,7 @@ return [
 
     'Sign_Up' => 'Sign Up',
     'userName' => 'User Name',
-    'fullName' => 'Full Name',
+    'fullName' => 'First Name',
     'initials' => 'Initials',
     'lastName' => 'Last Name',
     'designation' => 'Designation',
@@ -28,5 +28,9 @@ return [
     'password' => 'Password',
     'confirm_password'=>'Confirm Password',
     'submit' => 'Sign Up',
+    'users' => 'View Users',
+    'action' => 'Action',
+    'home' => 'Home',
+    'logout' => 'Logout'
 
 ];
