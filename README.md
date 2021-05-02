@@ -19,8 +19,8 @@
 1. To execute unit tests enter "***php artisan test***"
 
 ### Developer Info
-Bhagya Rathnayake
-Hasara Abeywardhane
-Kaushalya Abeywardhane
-Perinpanayagam Mayooran
+Bhagya Rathnayake,
+Hasara Abeywardhane,
+Kaushalya Abeywardhane,
+Perinpanayagam Mayooran,
 Vibhath Algama
