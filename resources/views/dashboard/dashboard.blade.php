@@ -2,8 +2,6 @@
 
 <div class="container container-sm mx-auto">
 
-
-
   <div class="row">
     @if(session('loggedInUser'))
     <h1 style="color: white">Hello, {{Session::get('loggedInUser')[0]->full_name}}!!!</h1>
