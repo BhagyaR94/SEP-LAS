@@ -29,5 +29,21 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
             'user_type' => '2',
         ]);
+
+        DB::table('employee')->insert([
+            'full_name'=> 'User',
+            'initials' => 'U',
+            'last_name' => 'User',
+            'designation' => 'Teacher',
+            'date_joined' => '2020-01-01',
+            'primary_address' => 'Primary Address',
+            'secondary_address' => 'Secondary Address',
+            'primary_contact' => '0112796798',
+            'secondary_contact' => '0112796798',
+            'user_name' => 'user1',
+            'email' => 'user@user.com',
+            'password' => 'user',
+            'user_type' => '1',
+        ]);
     }
 }
