@@ -1,14 +1,14 @@
 @extends('layouts.master')
-<h1></h1>
 <div id="e_leave_report">
     <div class="container">
         <div id="e_leave_report-row" class="row justify-content-center">
             <div id="e_leave_report-column" class="col-md-6">
 
                 <div id="e_leave_report-box" class="col-md-12">
-                    <form id="e_leave_report-form" class="form" action="{{ url('/e_leave_report') }}" method="POST">
+                    <form id="e_leave_report-form" class="form" action="{{ url('/requestEReport') }}" method="POST">
                         @csrf
                         <h3 class="text-center text-info">{{__('e_leave_report.Request_e_Leaves_Report')}}</h3>
+                        <input type="text" value="{{$user}}" id="id" name="id">
                         <div class="form-group">
                             <label for="start_date" class="text-info">{{__('e_leave_report.start_date')}}:</label><br>
                             <input type="date" name="start_date" id="start_date" class="form-control">
@@ -27,7 +27,7 @@
                             <br>
                             <div class="Row align-items-center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <input type="button" name="cancel" class="btn btn-info btn-md" value="{{__('e_leave_report.submit1')}}">
+                                    <a class="btn btn-info btn-md" name="cancel" href="{{url('/dashboard/dashboard')}}">{{__('e_leave_report.submit1')}}</a>
                                 </div>
                             </div>
                         </div>

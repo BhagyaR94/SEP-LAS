@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Str;
 // $DATABASE_URL=parse_url('postgres://xwhhqskybrpbpk:945a8d37d05e1c6b76ec3d65856e9b26d7c0978e517d86c333099488a8f7aeca@ec2-54-242-43-231.compute-1.amazonaws.com:5432/d6lv8pvgi95gq5');
-#$DATABASE_URL=parse_url('mysql://127.0.0.1?reconnect=true');
-#$host = $DATABASE_URL["127.0.0.1"];
-#$username = $DATABASE_URL["root"];
-#$password = $DATABASE_URL["root"];
-#$database = substr($DATABASE_URL["path"], 1);
+$DATABASE_URL=parse_url('mysql://bd5dcebb5cee17:775d10d8@us-cdbr-east-03.cleardb.com/heroku_680bcea11867197?reconnect=true'); //please do NOT change these...!
+$host = $DATABASE_URL["host"]; //please do NOT change these...!
+$username = $DATABASE_URL["user"]; //please do NOT change these...!
+$password = $DATABASE_URL["pass"]; //please do NOT change these...!
+$database = substr($DATABASE_URL["path"], 1); //please do NOT change these...!
 
 return [
 
@@ -51,17 +51,16 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            //'url' => env('DATABASE_URL'),
-            //'host' => $host,
-            //'port' => env('DB_PORT', '3306'),
-            //'database' => $database,
-            //'username' => $username,
-            //'password' => $password,
-             'host' => env('DB_HOST'),
-             'database' => env('DB_DATABASE'),
-             'username' => env('DB_USERNAME'),
-             'password' => env('DB_PASSWORD'),
-             'port' => env('DB_PORT'),
+            'port' => env('DB_PORT', '3306'),
+            'url' => env('DATABASE_URL'),
+            'host' => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            // 'host' => 'localhost', //Please user these configuraitons when you're working locally
+            // 'database' => 'sep_las', //Please user these configuraitons when you're working locally
+            // 'username' => 'root', //Please user these configuraitons when you're working locally
+            // 'password' => '', //Please user these configuraitons when you're working locally
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
@@ -135,7 +134,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

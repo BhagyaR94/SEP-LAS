@@ -9,6 +9,9 @@ use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RequstELeaves;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MaterialAttaching;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +37,7 @@ Route::get('/login/{locale}', function (Request $request) {
 });
 
 Route::group([
-    'middleware' => 'locale'
+    'middleware' => 'locale',
 ], function () {
     Route::post('/signIn', [AuthController::class, 'checkLoginData']);
 
@@ -56,19 +59,44 @@ Route::group([
 
     Route::get('/getLeavesByUserId', [LeaveController::class, 'getLeaveInformationByUserId']);
 
+    Route::post('/leave', [LeaveController::class, 'storeLeaveDataDb']);
 
-    Route::get('/e_leave_report', function () {
-        return view('e_leave_report/e_leave_report');
+    Route::get('/e_leave_report/{userId}', function (Request $request) {
+        return view('e_leave_report/e_leave_report')->with('user', $request->userId);
     });
 
     Route::get('/getpdf', [PDFController::class, 'getpdf']);
 
-    /*
-    This route is bound to LeaveApplication Model. 
-    Model is explicitly bound in RouteServiceProvider::boot() function.
-    */
-    Route::resource('/leaves', LeaveApplicationController::class )->parameters([
+    Route::resource('/leaves', LeaveApplicationController::class)->parameters([
         'leaves' => 'leaveApplication'
-    ]);    
+    ]);
+
+    Route::get('/sendEmail', [NotificationController::class, 'sendEmail']);
+
+    Route::get('/loadAvailableResources', [EmployeeController::class, 'loadAvailableResources']);
+
+    Route::get('/getAllPendingLeaves', [LeaveController::class, 'getAllPendingLeaves']);
+
+    Route::get('/getAllApprovedLeaves', [LeaveController::class, 'getAllApprovedLeaves']);
+
+    Route::get('/approveLeaveById/{leaveId}', [LeaveController::class, 'approveLeaveById']);
+
+    Route::get('/rejectLeaveById/{leaveId}', [LeaveController::class, 'rejectLeaveById']);
+
+    Route::get('/setPendingLeaveById/{leaveId}', [LeaveController::class, 'setPendingLeaveById']);
+
+    Route::post('/requestEReport', [LeaveController::class, 'requestEReport']);
+
+    Route::get('checkAjax', function () {
+        echo "AJAX HERE";
+    });
  
+    //Route::get('/material_attaching', [MaterialAttaching::class, 'createForm']);
+    Route::get('/material_attaching', function () {
+        return view('material_attaching/material_attaching');
+    });
+    
+    Route::post('/material_attaching', [MaterialAttaching::class, 'fileUpload'])->name('fileUpload');
+
+    Route::get('/leave_summary/{user_id}', [LeaveController::class, 'loadLeaveSummary']);
 });

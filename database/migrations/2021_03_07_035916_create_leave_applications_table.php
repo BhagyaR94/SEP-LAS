@@ -14,24 +14,28 @@ class CreateLeaveApplicationsTable extends Migration
     public function up()
     {
         Schema::create('leave_applications', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->id('id')->startingValue(1200)->unique();
             $table->integer('applicant_id')->nullable(false);
             $table->timestamps();
             $table->date('start_date')->nullable(false);
             $table->date('end_date')->nullable(false);
-            $table->string('reason',225)->nullable(false);
-            $table->char('type',120)->nullable(false);
-            $table->enum('half_day', ['morning','evening']);       
+            $table->integer('number_of_days')->nullable(false);
+            $table->string('reason', 225)->nullable(false);
+            $table->string('leave_type', 50)->nullable(false);
             $table->string('contact_location')->nullable(false);
-            $table->enum('status',['pending','approved','rejected'])->nullable(false);
-            $table->integer('substitute_employee_id');
-            $table->integer('supervisor_employee_id')->nullable(false);
+            $table->integer('telephone')->nullable(true);
+            $table->text('material_name')->nullable(true);
+            $table->text('material_path')->nullable(true);
+            $table->enum('status', ['pending', 'approved', 'rejected'])->nullable(false);
+            $table->integer('substitute_employee_id')->nullable(true);
+            $table->integer('supervisor_employee_id')->nullable(true);
+            // $table->enum('half_day', ['morning','evening']);       
             
             //constraints 
-            //$table->primary('id');
-            $table->unique( ['applicant_id', 'start_date', 'end_date' ]);
-         #   $table->foreign('substitute_employee_id')->references('id')->on('employee');
-         #   $table->foreign('supervisor_employee_id')->references('id')->on('employee');           
+            // $table->primary('id');
+            // $table->unique( ['applicant_id', 'start_date', 'end_date' ]);
+            #   $table->foreign('substitute_employee_id')->references('id')->on('employee');
+            #   $table->foreign('supervisor_employee_id')->references('id')->on('employee');           
         });
     }
 

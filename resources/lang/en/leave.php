@@ -14,9 +14,9 @@ return [
     */
 
     'Leave_Form_Akuressa_Maha_Vidyalaya' => 'Leave Form Akuressa Maha Vidyalaya',
-    'name' => 'Name',
-    'designation' => 'Designation',
-    'department' => 'Depatment',
+    //'name' => 'Name',
+    //'designation' => 'Designation',
+    //'department' => 'Depatment',
     'leave_type' => 'Leave Type',
     'leave_type' => 'Leave Type',
     'start_date' => 'Leave Start Date',
@@ -24,16 +24,22 @@ return [
     'casual_leave' => 'casual leave',
     'sick_leave' => 'sick leave',
     'other' => 'other',
-    'date' => 'Date',
+    'startdate' => 'Leave Start Date',
+    'enddate' => 'Leave End Date',
     'Number_Of_Days_Apply' => 'Number Of Days Apply',
     'Reason' => 'Reason',
-    'First_Appoinment_Date' => 'First Appoinment Date',
-    'Reserved_Person_Name' => 'Reserved Person Name',
     'Address_When_On_Leave' => 'AddressWhen On Leave',
     'Tel_No' => 'Telephone Number',
+    //'First_Appoinment_Date' => 'First Appoinment Date',
+    'Backup_Person_Name' => 'Backup Person Name',
+    'Leave_Status' => 'Leave_Status',
     'submit' => 'Submit',
     'submit1' => 'Cancel',
+    'requestereport' => 'Request E Report',
+    'pending' => 'Pending Leaves',
+    'approved' => 'Approved Leaves',
+    'applyleaves' => 'Apply Leaves',
+    'viewleaves' => 'View Leave Summary',
 
 
 ];
-

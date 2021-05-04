@@ -7,71 +7,70 @@
                     <form id="leave-form" class="form" action="{{ url('/leave')}}" method="POST">
                         @csrf
                         <h3 class="text-center text-info">{{__('leave.Leave_Form_Akuressa_Maha_Vidyalaya')}}</h3>
-                            <div class="form-group">
-                                <label for="name" class="text-info">{{__('leave.name')}}:</label><br>
-                                <input type="text" name="name" id="name" class="form-control">
+                        <div class="dropdown">
+                            <label for="leavetype" class="text-info">{{__('leave.leave_type')}}:</label><br>
+                            <select class="form-select" name="leave_type" aria-label="Default select example">
+                                <option value="{{__('leave.casual_leave')}}">{{__('leave.casual_leave')}}</option>
+                                <option value="{{__('leave.sick_leave')}}">{{__('leave.sick_leave')}}</option>
+                                <option value="{{__('leave.other')}}">{{__('leave.other')}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Date" class="text-info">{{__('leave.startdate')}}:</label><br>
+                            <input type="date" name="startdate" id="startdate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="Date" class="text-info">{{__('leave.enddate')}}:</label><br>
+                            <input type="date" name="enddate" id="enddate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="Number Of Dates Apply" class="text-info">{{__('leave.Number_Of_Days_Apply')}}:</label><br>
+                            <input type="text" name="numberofdateapply" id="numberofdateapply" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="reason" class="text-info">{{__('leave.Reason')}}:</label><br>
+                            <input type="text" name="reason" id="reason" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="Address When On Leave" class="text-info">{{__('leave.Address_When_On_Leave')}}:</label><br>
+                            <input type="text" name="address" id="address" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="Tel No" class="text-info">{{__('leave.Tel_No')}}:</label><br>
+                            <input type="text" name="telno" id="telno" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="Leave Status" class="text-info">{{__('leave.Leave_Status')}}:</label><br>
+                            <input type="text" name="leavestatus" id="leavestatus" class="form-control">
+                        </div>
+                        <div class="dropdown">
+                            <label for="Backup Person Name" class="text-info">{{__('leave.Backup_Person_Name')}}</label><br>
+                            <select class="form-select" id="backupersonname" name="backupersonname" aria-label="Default select example">
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="Row align-items-center">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('leave.submit')}}">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="designation" class="text-info">{{__('leave.designation')}}:</label><br>
-                                <input type="text" name="designation" id="designation" class="form-control">
+                            <br>
+                            <div class="Row align-items-center">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <input type="button" name="cancel" class="btn btn-info btn-md" value="{{__('leave.submit1')}}">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="department" class="text-info">{{__('leave.department')}}:</label><br>
-                                <input type="text" name="department" id="depatment" class="form-control">
-                            </div>
-                            <div class="dropdown">
-                                <label for="leavetype" class="text-info">{{__('leave.leave_type')}}:</label><br>
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                LEAVE TYPE
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <li><button class="dropdown-item" type="button">{{__('leave.casual_leave')}}:</button></li>
-                                    <li><button class="dropdown-item" type="button">{{__('leave.sick_leave')}}:</button></li>
-                                    <li><button class="dropdown-item" type="button">{{__('leave.other')}}:</button></li>
-                                </ul>
-                            </div>
-                            <div class="form-group">
-                                <label for="Date" class="text-info">{{__('leave.date')}}:</label><br>
-                                <input type="text" name="date" id="date" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="Number Of Dates Apply" class="text-info">{{__('leave.Number_Of_Days_Apply')}}:</label><br>
-                                <input type="text" name="numberofdateapply" id="numberofdateapply" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="reason" class="text-info">{{__('leave.Reason')}}:</label><br>
-                                <input type="text" name="reason" id="reason" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="First Appoinment Date" class="text-info">{{__('leave.First_Appoinment_Date')}}:</label><br>
-                                <input type="text" name="firstappoinmentdate" id="firstappoinmentdate" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="Reserved Person Name" class="text-info">{{__('leave.Reserved_Person_Name')}}:</label><br>
-                                <input type="text" name="reservedpersonname" id="reservedpersonname" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="Address When On Leave" class="text-info">{{__('leave.Address_When_On_Leave')}}:</label><br>
-                                <input type="text" name="address" id="address" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="Tel No" class="text-info">{{__('leave.Tel_No')}}:</label><br>
-                                <input type="text" name="telno" id="telno" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('leave.submit')}}">
-                            </div>
-                            <div class="form-group">
-                                <input type="button" name="cancel" class="btn btn-info btn-md" value="{{__('leave.submit1')}}">
-                            </div>
+                        </div>
                     </form>
+
                     @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $errorItem)
-                                    <li>{{$errorItem}}</li>
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $errorItem)
+                            <li>{{$errorItem}}</li>
                             @endforeach
-                            </ul>
+                        </ul>
                     </div>
                     @endif
                 </div>

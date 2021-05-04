@@ -1,33 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Employee;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
+use App\Models\Employee; 
 
 class EmployeeController extends Controller
 {
-    public function index()
+    public function loadAvailableResources(Request $request)
     {
-
+        $query = "SELECT * FROM employee WHERE id NOT IN (SELECT applicant_id FROM leave_applications WHERE start_date >= '".$request->start_date."' AND end_date <= '".$request->end_date."')";
+        return DB::select($query);
     }
 
-    public function show()
+    public function getAvailableTeachers(Request $request)
     {
-
+        $query = "SELECT id,full_name FROM employee WHERE id NOT IN (SELECT applicant_id FROM leave_applications WHERE start_date >= '".$request->start_date."' AND end_date <= '".$request->end_date."') AND id <> '".$request->employeeId."'";
+        return Response::json(DB::select($query));
+        //return Response::json(array('start_date' => $request->startDate, 'end_date' => $request->endDate, 'id' => $request->employeeId));
     }
 
-    public function getEmployeeById($employeeId)
+    public static function getNameById($id)
     {
-        $employee = new Employee();
-        $employee = Employee::findOrFail($employeeId);
-
-        return $employee;
-    }
-
-    public static function getTeachersList()
-    {
-        return Employee::all();
-    }
+        $query = "SELECT id,full_name FROM employee WHERE id =$id";
+        return (DB::select($query));        
+    } 
+    
 
 }
